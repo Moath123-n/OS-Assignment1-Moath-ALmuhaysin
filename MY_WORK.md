@@ -292,7 +292,7 @@ In contemporary software, such web browsers, where one thread manages the user i
 > 💡 **TIP:** Note that the class named `Process` in our code is a *simulated* process, and it is run by a real Java *thread*. Explain that distinction and point to the `new Thread(process)` line in `addProcessToQueue()`.
 
 **Your Answer:** *(3-5 sentences)*
-
+While a thread is a smaller unit of execution that lives within a process and shares its memory, a process is an independent operating program with its own isolated memory space. Compared to complete OS processes, threads have far reduced creation overhead and enable faster context switching, which is why we employed them in this assignment. For example, our Process object in SchedulerSimulation.java is just a simulated idea, but it is carried out using new Thread(process) to effectively share the JVM's memory without slowing down the system.
 [Write your answer here.]
 
 ## Question 2: Ready Queue Behavior
@@ -304,7 +304,7 @@ In contemporary software, such web browsers, where one thread manages the user i
 > 💡 **TIP:** Pick a process with a large burst time (e.g., more than 2 × time quantum) and count how many "added to ready queue" lines it has after the first one. Search your console for its name (e.g., `P3`).
 
 **Your Answer:** *(3-5 sentences)*
-
+A process yields the CPU, saves its state, and goes back to the end of the ready queue to wait for its next turn if it doesn't finish inside its time quantum. In my simulation, for instance, P1 had a time quantum of 2000 ms and a burst time of 3983 ms. P1 completed its first quantum (2000 ms), had 1983 ms left, and was re-queued. In order to prevent shorter processes from starving while waiting for extremely lengthy processes to complete, re-queueing provides fairness.
 [Write your answer here.]
 
 Example from my output:
@@ -323,15 +323,15 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
+1. **New**: [When the addProcessToQueue method calls a new Thread (process), P1 enters this state.]
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: [When P1 is added to the processQueue and is awaiting the CPU, it becomes Runnable.]
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: [When the scheduler loop dequeues P1 and invokes currentThread.start(), it enters the Running state.]
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4. **Waiting**: [When currentThread, the main thread goes into the Waiting state.P1 "sleeps" using Thread.sleep() to mimic work while join() is invoked, halting until P1 completes its quantum.]
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: [When P1's remainingTime is zero and the run() or runToCompletion() procedure is successfully finished, P1 is terminated.]
 
 ## Question 4: Real-World Applications
 
@@ -341,32 +341,32 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
+### Example 1 (operating-system level): [CPU Process Scheduler]
 
 **Description**:
-[Describe the real-world scenario.]
+[Modern desktop operating systems use a variation of Round-Robin scheduling to allocate CPU time among dozens of background services and active applications.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[It ensures fairness and responsiveness; every application gets a small time slice (quantum) rapidly, giving the user the illusion that all programs are running simultaneously without any single app freezing the OS.]
 
-### Example 2: [Name of application/scenario]
+### Example 2: [Node.js / Web Server Request Handling]
 
 **Description**:
-[Describe the real-world scenario or application.]
+[A web server handling multiple incoming HTTP requests from different users concurrently.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[It provides predictability. By distributing CPU time evenly among incoming requests, the server ensures that a very heavy database query from one user doesn't block simple page load requests from hundreds of other users.]
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.The practical distinction between entire burst time and a time quantum.
+2.The programmatic implementation of context switching.
+3.The lifetime of a Java thread (Runnable, start, join, sleep).
 
 **Concepts I need to study more:**
-1.
-2.
+1.Handling shared memory conflicts between threads.
+2.Advanced scheduling algorithms like Multi-level Feedback Queue.
 
 ---
 
