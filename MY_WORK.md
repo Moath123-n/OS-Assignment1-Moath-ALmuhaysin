@@ -129,68 +129,68 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - [October 6, 2026, 4:30 PM]
+**What I did**:Forked the starter repository and configured my unique student ID.
 
-**Details**:
+**Details**:I started by setting up my university GitHub account and forking the project. I located the SchedulerSimulation.java file and changed the studentID variable on line 150 to my actual ID (443050224) to ensure my output is uniquely seeded. I ran the program to verify the default Round-Robin scheduling worked.
 
-**Challenges**:
+**Challenges**:Ensuring the Java environment was properly pointing to JDK 22 in VS Code.
 
-**Solution**:
+**Solution**: I updated the Java Home path settings in my IDE workspace and verified the compiler version.
 
-**Time spent**:
-
----
-
-### Entry 2 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**:45 minutes
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 2 - [October 7, 2026, 1:30 AM]
+**What I did**:Implemented Feature 1 (Process Priority).
 
-**Details**:
+**Details**:I added a priority variable to the Process class and generated a random number between 1 and 10 in the constructor. Then, I updated the print statement in the addProcessToQueue method to display this new priority alongside the burst time.
 
-**Challenges**:
+**Challenges**:Figuring out where to display the priority without altering the FIFO logic of the ready queue.
 
-**Solution**:
+**Solution**:I carefully read the requirements which stated "Display only", so I restricted the modification to the console output when a process is enqueued.
 
-**Time spent**:
-
----
-
-### Entry 4 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**:2 hour
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 7, 2026, 7:15 PM]
+**What I did**:Implemented Feature 2 (Context Switch Counter).
 
-**Details**:
+**Details**:I declared a public static int contextSwitches = 0; inside the SchedulerSimulation class. I placed the increment logic inside the while loop right before calling currentThread.start(). Finally, I added a formatted print statement at the end of the simulation.
 
-**Challenges**:
+**Challenges**:I was initially confused if yielding the CPU should count as a context switch or starting a new thread.
 
-**Solution**:
+**Solution**:I realized that every time a new thread is pulled from the ready queue and .start() is called, a context switch occurs, so placing the counter there was the most accurate approach.
 
-**Time spent**:
+**Time spent**:2 hour
+
+---
+
+### Entry 4 - [October 8, 2026, 2:00 PM]
+**What I did**:Implemented Feature 3 (Waiting Time Tracking).
+
+**Details**:I added creationTime and completionTime variables using System.currentTimeMillis(). I calculated the turnaround and waiting times. To display the final table, I created an ArrayList to store all processes and looped through it at the end of the main method.
+
+**Challenges**:The simulation processes finish at different times, so getting the exact completion time for each process required updating both run() and runToCompletion() methods.
+
+**Solution**:I added this.completionTime = System.currentTimeMillis(); in both methods right before they print their "finished execution" statements.
+
+**Time spent**:1.5 hours
+
+---
+
+### Entry 5 - [October 8, 2026, 5:00 PM]
+**What I did**:Completed the documentation and tested final outputs.
+
+**Details**:I filled out the Development Log, wrote my reflections, and extracted specific console output examples for the technical answers. I executed the program multiple times to ensure all features and formatting matched the required output perfectly.
+
+**Challenges**:Writing concise technical explanations within the 3-5 sentence limit while still providing concrete code examples.
+
+**Solution**:I drafted my answers first, then edited them to remove unnecessary filler words, focusing only on the core OS concepts.
+
+**Time spent**:2 hours
 
 ---
 
@@ -211,13 +211,13 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [3 days]
 
-**Most challenging part**:
+**Most challenging part**:Implementing Feature 3 and accurately tracking the currentTimeMillis() without blocking the threads incorrectly.
 
-**Most interesting learning**:
+**Most interesting learning**:Seeing how the CPU visibly switches between different Java threads using a time quantum.
 
-**What I would do differently next time**:
+**What I would do differently next time**:I would map out the thread lifecycle on paper before writing the code to better visualize the logic.
 
 ---
 
