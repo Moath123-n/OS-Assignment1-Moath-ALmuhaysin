@@ -236,7 +236,7 @@
 > 💡 **TIP:** Talk about thread creation (`Runnable`, `Thread.start()`), waiting with `Thread.join()`, simulating work with `Thread.sleep()`, and what surprised you.
 
 **Your Answer:** *(5-7 sentences)*
-
+I discovered that multithreading significantly increases a program's efficiency by enabling it to carry out several tasks at once. I was able to mimic independent activities by implementing the Runnable interface in the Process class. I learned that while Thread.sleep() efficiently mimics the CPU processing time, Thread.start() is essential to start execution. Additionally, I learned that the main thread can wait for a particular quantum to complete before continuing by using Thread.join() in the main loop. In general, it made clear how an operating system manages multiple tasks at once.
 [Write your answer here.]
 
 ## Question 2: What was the most challenging part of this assignment?
@@ -244,7 +244,7 @@
 > 💡 **TIP:** Pick **one** specific challenge (understanding the code, one of the features, Git, the video) and say *why* it was hard.
 
 **Your Answer:** *(5-7 sentences)*
-
+The Waiting Time Tracking feature (Feature 3) was the hardest to implement. It was challenging to record the exact completion time for every process since threads run concurrently and halt at various times. Whether the thread completed its burst time inside the runToCompletion() method or the ordinary run() method, I had to make sure that the time was logged precisely at that point. Careful arrangement of the data structures was also necessary to manage the list of processes to produce the final summary table without generating a ConcurrentModificationException.
 [Write your answer here.]
 
 ## Question 3: How did you overcome the challenges you faced?
@@ -252,7 +252,7 @@
 > 💡 **TIP:** Describe your method: reading documentation, adding `System.out.println` to debug, re-reading the README, testing after each small change, asking for help.
 
 **Your Answer:** *(5-7 sentences)*
-
+By dissecting the code and mostly depending on System.out.println() commands to debug the thread states, I was able to overcome these difficulties. I followed the thread's execution path and put the currentTimeMillis() assignment just before the thread ended when I was having trouble capturing the completion time. Rereading the assignment README is also recommended.MD made it clear to me that the process references required to be stored in an external list. I made sure my reasoning was valid by regularly testing the code after each small modification.
 [Write your answer here.]
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
@@ -260,7 +260,7 @@
 > 💡 **TIP:** Use real applications you know (web browser, game, mobile app, music player) and connect each one to what you built here.
 
 **Your Answer:** *(5-7 sentences)*
-
+In contemporary software, such web browsers, where one thread manages the user interface while another downloads a file in the background, multithreading is crucial. Similar to this, separate threads in video games can handle playing music, processing user input, and generating images all at once without causing the program to freeze. By allocating a distinct thread to every connection, I can also apply these ideas to web servers that must manage hundreds of concurrent user requests. Comprehending these ideas enables me to create programs that are efficient and extremely responsive.
 [Write your answer here.]
 
 ### Optional: What would you like to learn more about?
