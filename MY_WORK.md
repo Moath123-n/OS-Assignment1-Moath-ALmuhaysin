@@ -129,68 +129,68 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - [October 6, 2026, 4:30 PM]
+**What I did**:Forked the starter repository and configured my unique student ID.
 
-**Details**:
+**Details**:I started by setting up my university GitHub account and forking the project. I located the SchedulerSimulation.java file and changed the studentID variable on line 150 to my actual ID (443050224) to ensure my output is uniquely seeded. I ran the program to verify the default Round-Robin scheduling worked.
 
-**Challenges**:
+**Challenges**:Ensuring the Java environment was properly pointing to JDK 22 in VS Code.
 
-**Solution**:
+**Solution**: I updated the Java Home path settings in my IDE workspace and verified the compiler version.
 
-**Time spent**:
-
----
-
-### Entry 2 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**:45 minutes
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 2 - [October 7, 2026, 1:30 AM]
+**What I did**:Implemented Feature 1 (Process Priority).
 
-**Details**:
+**Details**:I added a priority variable to the Process class and generated a random number between 1 and 10 in the constructor. Then, I updated the print statement in the addProcessToQueue method to display this new priority alongside the burst time.
 
-**Challenges**:
+**Challenges**:Figuring out where to display the priority without altering the FIFO logic of the ready queue.
 
-**Solution**:
+**Solution**:I carefully read the requirements which stated "Display only", so I restricted the modification to the console output when a process is enqueued.
 
-**Time spent**:
-
----
-
-### Entry 4 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**:2 hour
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 7, 2026, 7:15 PM]
+**What I did**:Implemented Feature 2 (Context Switch Counter).
 
-**Details**:
+**Details**:I declared a public static int contextSwitches = 0; inside the SchedulerSimulation class. I placed the increment logic inside the while loop right before calling currentThread.start(). Finally, I added a formatted print statement at the end of the simulation.
 
-**Challenges**:
+**Challenges**:I was initially confused if yielding the CPU should count as a context switch or starting a new thread.
 
-**Solution**:
+**Solution**:I realized that every time a new thread is pulled from the ready queue and .start() is called, a context switch occurs, so placing the counter there was the most accurate approach.
 
-**Time spent**:
+**Time spent**:2 hour
+
+---
+
+### Entry 4 - [October 8, 2026, 2:00 PM]
+**What I did**:Implemented Feature 3 (Waiting Time Tracking).
+
+**Details**:I added creationTime and completionTime variables using System.currentTimeMillis(). I calculated the turnaround and waiting times. To display the final table, I created an ArrayList to store all processes and looped through it at the end of the main method.
+
+**Challenges**:The simulation processes finish at different times, so getting the exact completion time for each process required updating both run() and runToCompletion() methods.
+
+**Solution**:I added this.completionTime = System.currentTimeMillis(); in both methods right before they print their "finished execution" statements.
+
+**Time spent**:1.5 hours
+
+---
+
+### Entry 5 - [October 8, 2026, 5:00 PM]
+**What I did**:Completed the documentation and tested final outputs.
+
+**Details**:I filled out the Development Log, wrote my reflections, and extracted specific console output examples for the technical answers. I executed the program multiple times to ensure all features and formatting matched the required output perfectly.
+
+**Challenges**:Writing concise technical explanations within the 3-5 sentence limit while still providing concrete code examples.
+
+**Solution**:I drafted my answers first, then edited them to remove unnecessary filler words, focusing only on the core OS concepts.
+
+**Time spent**:2 hours
 
 ---
 
@@ -211,13 +211,13 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [3 days]
 
-**Most challenging part**:
+**Most challenging part**:Implementing Feature 3 and accurately tracking the currentTimeMillis() without blocking the threads incorrectly.
 
-**Most interesting learning**:
+**Most interesting learning**:Seeing how the CPU visibly switches between different Java threads using a time quantum.
 
-**What I would do differently next time**:
+**What I would do differently next time**:I would map out the thread lifecycle on paper before writing the code to better visualize the logic.
 
 ---
 
@@ -236,7 +236,7 @@
 > 💡 **TIP:** Talk about thread creation (`Runnable`, `Thread.start()`), waiting with `Thread.join()`, simulating work with `Thread.sleep()`, and what surprised you.
 
 **Your Answer:** *(5-7 sentences)*
-
+I discovered that multithreading significantly increases a program's efficiency by enabling it to carry out several tasks at once. I was able to mimic independent activities by implementing the Runnable interface in the Process class. I learned that while Thread.sleep() efficiently mimics the CPU processing time, Thread.start() is essential to start execution. Additionally, I learned that the main thread can wait for a particular quantum to complete before continuing by using Thread.join() in the main loop. In general, it made clear how an operating system manages multiple tasks at once.
 [Write your answer here.]
 
 ## Question 2: What was the most challenging part of this assignment?
@@ -244,7 +244,7 @@
 > 💡 **TIP:** Pick **one** specific challenge (understanding the code, one of the features, Git, the video) and say *why* it was hard.
 
 **Your Answer:** *(5-7 sentences)*
-
+The Waiting Time Tracking feature (Feature 3) was the hardest to implement. It was challenging to record the exact completion time for every process since threads run concurrently and halt at various times. Whether the thread completed its burst time inside the runToCompletion() method or the ordinary run() method, I had to make sure that the time was logged precisely at that point. Careful arrangement of the data structures was also necessary to manage the list of processes to produce the final summary table without generating a ConcurrentModificationException.
 [Write your answer here.]
 
 ## Question 3: How did you overcome the challenges you faced?
@@ -252,7 +252,7 @@
 > 💡 **TIP:** Describe your method: reading documentation, adding `System.out.println` to debug, re-reading the README, testing after each small change, asking for help.
 
 **Your Answer:** *(5-7 sentences)*
-
+By dissecting the code and mostly depending on System.out.println() commands to debug the thread states, I was able to overcome these difficulties. I followed the thread's execution path and put the currentTimeMillis() assignment just before the thread ended when I was having trouble capturing the completion time. Rereading the assignment README is also recommended.MD made it clear to me that the process references required to be stored in an external list. I made sure my reasoning was valid by regularly testing the code after each small modification.
 [Write your answer here.]
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
@@ -260,7 +260,7 @@
 > 💡 **TIP:** Use real applications you know (web browser, game, mobile app, music player) and connect each one to what you built here.
 
 **Your Answer:** *(5-7 sentences)*
-
+In contemporary software, such web browsers, where one thread manages the user interface while another downloads a file in the background, multithreading is crucial. Similar to this, separate threads in video games can handle playing music, processing user input, and generating images all at once without causing the program to freeze. By allocating a distinct thread to every connection, I can also apply these ideas to web servers that must manage hundreds of concurrent user requests. Comprehending these ideas enables me to create programs that are efficient and extremely responsive.
 [Write your answer here.]
 
 ### Optional: What would you like to learn more about?
@@ -292,7 +292,7 @@
 > 💡 **TIP:** Note that the class named `Process` in our code is a *simulated* process, and it is run by a real Java *thread*. Explain that distinction and point to the `new Thread(process)` line in `addProcessToQueue()`.
 
 **Your Answer:** *(3-5 sentences)*
-
+While a thread is a smaller unit of execution that lives within a process and shares its memory, a process is an independent operating program with its own isolated memory space. Compared to complete OS processes, threads have far reduced creation overhead and enable faster context switching, which is why we employed them in this assignment. For example, our Process object in SchedulerSimulation.java is just a simulated idea, but it is carried out using new Thread(process) to effectively share the JVM's memory without slowing down the system.
 [Write your answer here.]
 
 ## Question 2: Ready Queue Behavior
@@ -304,7 +304,7 @@
 > 💡 **TIP:** Pick a process with a large burst time (e.g., more than 2 × time quantum) and count how many "added to ready queue" lines it has after the first one. Search your console for its name (e.g., `P3`).
 
 **Your Answer:** *(3-5 sentences)*
-
+A process yields the CPU, saves its state, and goes back to the end of the ready queue to wait for its next turn if it doesn't finish inside its time quantum. In my simulation, for instance, P1 had a time quantum of 2000 ms and a burst time of 3983 ms. P1 completed its first quantum (2000 ms), had 1983 ms left, and was re-queued. In order to prevent shorter processes from starving while waiting for extremely lengthy processes to complete, re-queueing provides fairness.
 [Write your answer here.]
 
 Example from my output:
@@ -323,15 +323,15 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
+1. **New**: [When the addProcessToQueue method calls a new Thread (process), P1 enters this state.]
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: [When P1 is added to the processQueue and is awaiting the CPU, it becomes Runnable.]
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: [When the scheduler loop dequeues P1 and invokes currentThread.start(), it enters the Running state.]
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4. **Waiting**: [When currentThread, the main thread goes into the Waiting state.P1 "sleeps" using Thread.sleep() to mimic work while join() is invoked, halting until P1 completes its quantum.]
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: [When P1's remainingTime is zero and the run() or runToCompletion() procedure is successfully finished, P1 is terminated.]
 
 ## Question 4: Real-World Applications
 
@@ -341,32 +341,32 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
+### Example 1 (operating-system level): [CPU Process Scheduler]
 
 **Description**:
-[Describe the real-world scenario.]
+[Modern desktop operating systems use a variation of Round-Robin scheduling to allocate CPU time among dozens of background services and active applications.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[It ensures fairness and responsiveness; every application gets a small time slice (quantum) rapidly, giving the user the illusion that all programs are running simultaneously without any single app freezing the OS.]
 
-### Example 2: [Name of application/scenario]
+### Example 2: [Node.js / Web Server Request Handling]
 
 **Description**:
-[Describe the real-world scenario or application.]
+[A web server handling multiple incoming HTTP requests from different users concurrently.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[It provides predictability. By distributing CPU time evenly among incoming requests, the server ensures that a very heavy database query from one user doesn't block simple page load requests from hundreds of other users.]
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.The practical distinction between entire burst time and a time quantum.
+2.The programmatic implementation of context switching.
+3.The lifetime of a Java thread (Runnable, start, join, sleep).
 
 **Concepts I need to study more:**
-1.
-2.
+1.Handling shared memory conflicts between threads.
+2.Advanced scheduling algorithms like Multi-level Feedback Queue.
 
 ---
 
