@@ -29,17 +29,17 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | [Moath nawaf ALmuhaysin] |
+| **Student ID** | [443050224] |
+| **University Email** | [443050224@std.psau.edu.sa] |
+| **GitHub Username** | [Moath123-n] |
+| **Repository Link** | [https://github.com/Moath123-n/OS-Assignment1-Moath-ALmuhaysin.git] |
  
 ---
 
 ## 🎥 Video Link
 
-**Video Link**: [Paste your video link here]
+**Video Link**: [https://drive.google.com/file/d/1HK2G90iRlRbX47oCefTiFMHT3K2tx3FR/view?usp=sharing]
 
 > ⚠️ **WARNING:** The video must be **publicly accessible** ("Anyone with the link can view") on **Google Drive**, **YouTube (Unlisted or Public)** or any other cloud file-sharing system. A private, restricted or broken link counts as a **missing video (-1 mark)**.
 >
